@@ -1,0 +1,31 @@
+---
+import type { RecommendationProps } from '../types/recommendation.props';
+
+interface Props extends RecommendationProps {}
+
+const { name, company, logo, description, userUrl } =
+  Astro.props;
+---
+
+<div class="flex flex-col gap-y-8 border-t border-t-black pt-9">
+  <p class="text-xl sm:text-xl text-justify md:text-left">
+    {description}
+  </p>
+  <a target="_blank" data-umami-event={`Show LinkedIn - ${name}`} href={userUrl} class="w-fit" rel="noreferrer" aria-label=`LinkedIn ${name} (opens in a new tab)`>
+    <div class="flex gap-5">
+      <div class="avatar">
+        <div class="w-16 h-fit sm:w-12 rounded-full">
+          <img src={logo} alt={name} />
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <p class="text-xl sm:text-lg">
+          {name}
+        </p>
+        <p class="uppercase text-lg sm:text-base opacity-50">
+          {company}
+        </p>
+      </div>
+    </div>
+  </a>
+</div>

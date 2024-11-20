@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Recommendation from '../components/Recommendation.astro';
+import { RECOMMENDATION } from '../data/recommendation';
+import { NAVIGATION_LINKS } from '../data/navigationLinks';
+import Button from '../components/Button.astro';
+import { EXPERIENCE } from '../data/experience';
+import Experience from '../components/Experience.astro';
+import Navbar from '../components/Navbar.astro';
+
+import Linkedin from '../icons/linkedin.astro';
+import Github from '../icons/github.astro';
+import ArrowDown from '../icons/arrow-down.astro';
+---
+
+<Layout title="Mykyta Cherniavskyi | Full Stack Engineer">
+	<main id="main" class="grid grid-cols-1 lg:grid-cols-10 w-screen px-6 sm:px-20 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-full mx-auto relative">
+		<Navbar />
+		<div data-mb-hidden-trigger="true" class="col-start-1 col-end-2 lg:col-end-5 xl:col-end-4 relative">
+			<div class="flex flex-col justify-between lg:sticky top-0 gap-5 min-h-screen lg:sidebar-h-screen pt-8 pb-5">
+				<div class="flex flex-col gap-8 lg:gap-5">
+					<div class="grow flex flex-col gap-3">
+						<h1 class="font-gambarino text-[2.4rem] sm:text-6xl lg:text-5xl">Mykyta Cherniavskyi</h1>
+						<h2 class="text-3xl sm:text-4xl lg:text-3xl">Full Stack Engineer</h2>
+					</div>
+
+					<div class="grow flex flex-col gap-4">
+						{NAVIGATION_LINKS.map((navigation) => (
+							<div class="flex items-center gap-x-2 text-xl">
+								<ArrowDown />
+								<a 
+									href={navigation.link}
+									aria-label={`Show ${navigation.label}`}
+									class="uppercase relative
+									after:content-[''] after:bg-black after:w-0 after:h-0.5 after:bottom-0 after:left-auto after:absolute after:right-0 after:duration-500
+									hover:after:left-0 hover:after:right-auto hover:after:w-full"
+								>{navigation.label}</a>
+							</div>
+						))}
+						<div class="flex gap-5 mt-2">
+							<Button blur href="mailto:mykyta.cherniavskyi1@gmail.com" ariaLabel="Contact Me (opens in a new tab)" dataUmamiEvent="Contact Me">Contact Me</Button>
+							<Button animated href="https://drive.google.com/file/d/1O6txBTUq4da0pzRkSh9EadqEKCiClaXZ/view?usp=sharing" ariaLabel="View Full CV (opens in a new tab)" dataUmamiEvent="View Full CV">View Full CV</Button>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col gap-4 lg:gap-3">
+					<h3 class="text-2xl sm:text-3xl lg:text-2xl">Full Stack Engineer with 5+ years of experience</h3>
+					<p class="text-lg sm:text-xl lg:text-lg">👋 Hi! I’m Mykyta (Nikita), a full-stack engineer who creates scalable, user-focused web applications. Skilled in TypeScript, Node.js, React, and AWS, I’m passionate about delivering seamless solutions. Let’s build something great together!</p>
+					<div class="flex gap-2 items-center">
+						<a
+							href="https://maps.app.goo.gl/tR8Tc2AyDEmp2xTPA"
+							target="_blank"
+							rel="noreferrer"
+							data-umami-event="Show Location"
+							aria-label="Munich, Germany"
+							class="relative group overflow-hidden col-span-2 h-48 sm:h-72 lg:h-40 w-full rounded-3xl border-4 border-gray-200 p-4 transition-all"
+						>
+							<div
+								class="absolute inset-0 z-10 bg-[url('/images/munich.webp')] bg-center bg-cover bg-no-repeat"
+							>
+							</div>
+							<div
+								class="absolute z-30 left-1/2 top-1/2 h-[20px] w-[20px] -translate-x-1/2 -translate-y-1/2 animate-marker rounded-full bg-blue-500"
+							>
+							</div>
+							<div
+								class="absolute left-1/2 top-1/2 z-30 h-[20px] w-[20px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-neutral-50 bg-blue-500 shadow-2xl"
+							>
+							</div>
+							<span
+								class="absolute left-4/2 top-1 z-30 font-semibold text-lg text-[#fbf7f4] uppercase"
+								>Munich, Germany</span
+							>
+						</a>
+					</div>
+					
+					<div class="flex gap-5">
+						<a               
+							class="flex"
+							href="https://www.linkedin.com/in/mykyta-cherniavskyi"
+							target="_blank"
+							rel="noreferrer noopener"
+							id="Linkedin"
+							aria-label="LinkedIn (opens in a new tab)"
+							data-umami-event="Show LinkedIn"
+						>
+							<Linkedin />
+						</a>
+						<a
+							class="flex"
+							href="https://github.com/MykytaCherniavskyi"
+							target="_blank"
+							rel="noreferrer noopener"
+							id="Github"
+							aria-label="Github (opens in a new tab)"
+							data-umami-event="Show Github"
+						>
+							<Github />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="lg:col-start-5 lg:col-end-5 xl:col-start-4"></div>
+		<div class="col-start-1 col-end-2 lg:col-start-6 lg:col-end-11 xl:col-start-5">
+			<div id="work" class="flex flex-col gap-7 pt-8">
+				<h3 class="text-3xl sm:text-4xl">
+					I’ve worked on <span class="font-bold">product startups</span> and <span class="font-bold">service company</span>
+				</h3>
+
+				{EXPERIENCE.map((experience) => <Experience {...experience} />)}
+			</div>
+			
+			<div id="education" class="flex flex-col gap-y-5 mt-10">
+				<h3 class="text-3xl">
+					Education
+				</h3>
+
+				<div class="bg-base-200 p-4 rounded-xl">
+					<div class="
+						 text-xl font-medium
+					">
+						<div class="flex gap-8">
+							<div class="flex overflow-hidden min-w-[5.5rem] w-[5.5rem] sm:w-24">
+								<div class="w-fit h-fit rounded-xl bg-white">
+									<img class="w-full h-full scale-75" src="/images/ssu.webp" alt="ssu logo">
+								</div>
+							</div>
+							<div>
+								<p class="text-2xl sm:text-3xl lg:text-xl font-bold">Sumy State University</p>
+								<p class="text-lg">Bachelor's degree, Computer Science</p>
+								<span class="text-base">2017 - 2019</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="recommendation" class="flex flex-col mt-10">
+				<h3 class="text-3xl mb-7">
+					Recommendations
+				</h3>
+				<div class="flex flex-col gap-y-8">
+					{RECOMMENDATION.map((recommendation) => <Recommendation {...recommendation} />)}
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-y-12 my-16 sm:mt-[6rem]">
+				<span class="text-center lg:text-start text-4xl sm:text-6xl lg:text-5xl xl:text-6xl font-bold transition-opacity ease-linear delay-500 connect">
+					Let’s Connect 🧩
+				</span>
+				<div class="w-full lg:max-w-56 px-10 lg:px-0 sm:max-w-[32rem] self-center lg:self-start">
+					<Button blur href="mailto:mykyta.cherniavskyi1@gmail.com" ariaLabel="Contact Me (opens in a new tab)" dataUmamiEvent="Contact Me">Contact Me</Button>
+				</div>
+			</div>
+		</div>
+		<div class="col-start-1 col-end-11">
+			<footer class="footer footer-center text-base-content rounded pt-12 lg:pt-[6.5rem] pb-14 sm:pb-[8.5rem]">
+				<nav class="flex flex-col gap-5 md:grid md:grid-flow-col md:gap-8 uppercase text-xl ">
+					{NAVIGATION_LINKS.map((navigation) => (
+						<a aria-label={`Show ${navigation.label}`} href={navigation.link} class="
+							uppercase relative
+							after:content-[''] after:bg-black after:w-0 after:h-0.5 after:bottom-0 after:left-auto after:absolute after:right-0 after:duration-500
+							hover:after:left-0 hover:after:right-auto hover:after:w-full
+						">{navigation.label}</a>
+					))}
+				</nav>
+				<nav>
+					<div class="grid grid-flow-col gap-4">
+						<a               
+							class="flex"
+							href="https://www.linkedin.com/in/mykyta-cherniavskyi"
+							target="_blank"
+							rel="noreferrer noopener"
+							aria-label="LinkedIn (opens in a new tab)"
+							id="Linkedin"
+							data-umami-event="Show LinkedIn"
+						>
+							<Linkedin />
+						</a>
+						<a
+							class="flex"
+							href="https://github.com/MykytaCherniavskyi"
+							target="_blank"
+							rel="noreferrer noopener"
+							aria-label="LinkedIn (opens in a new tab)"
+							id="Github"
+							data-umami-event="Show Github"
+						>
+							<Github />
+						</a>
+					</div>
+				</nav>
+				<aside>
+					<p class="flex items-center text-2xl">Made with <span class="text-2xl pl-2">❤️</span></p>
+				</aside>
+			</footer>
+		</div>
+	</main>
+</Layout>

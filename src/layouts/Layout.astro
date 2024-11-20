@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import '../styles/fonts.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="description"
+			content="Hi! I’m Mykyta (Nikita), a full-stack engineer specializing in scalable, user-focused web applications. Skilled in TypeScript, Node.js, React, and AWS, I create seamless digital solutions."
+		/>
+		<meta
+			name="keywords"
+			content="full stack engineer, software developer, TypeScript, Node.js, Nest.js, React, AWS, web applications, cloud computing, scalable solutions"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Mykyta Cherniavskyi" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cherniavskyi.dev">
+    <meta property="og:title" content="Mykyta Cherniavskyi | Full Stack Engineer">
+    <meta property="og:description" content="Skilled full-stack engineer with expertise in developing scalable web applications. Explore my portfolio and collaborate with me to create outstanding solutions!">
+		<link rel="icon" type="image/webp" href="/favicon.webp" />
+		<meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://www.cherniavskyi.dev">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<script defer src="https://cloud.umami.is/script.js" data-website-id="3161e4b4-ecb3-411f-adc2-d8f787e60800"></script>
+	</head>
+	<body>
+		<slot />
+		<script src="../scripts/main.ts"></script>
+	</body>
+</html>

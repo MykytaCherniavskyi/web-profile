@@ -1,0 +1,25 @@
+---
+const { blur, animated, href = '#', ariaLabel = '', dataUmamiEvent = '' } = Astro.props
+---
+
+{
+  blur
+  ?
+  <div class="relative group flex-1">
+    <div
+      class="absolute shadow-xl -inset-1 bg-transparent blur gradient-background-reverse rounded-full opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+    </div>
+    <a href={href} target="_blank" rel="noreferrer" data-umami-event={dataUmamiEvent} aria-label={ariaLabel} class="btn lg:btn-lg w-full rounded-full relative hover:bg-[#eeeae7] h-16 text-lg">
+      <slot/>
+    </a>
+  </div>
+  : animated ?
+  <div class="flex-1 relative">
+    <a href={href} target="_blank" rel="noreferrer" data-umami-event={dataUmamiEvent} aria-label={ariaLabel} class="btn lg:btn-lg border-transparent rounded-full w-full shadow-xl bg-transparent hover:bg-[#cfcbc6]/25 peer h-16 text-lg">
+      <slot/>
+    </a>
+    <div class="transition-all top-0 absolute gradient-background rounded-full -z-10 w-full h-full peer-active:peer-hover:scale-95"></div>
+  </div>
+  :
+  <a href={href} target="_blank" rel="noreferrer" data-umami-event={dataUmamiEvent} aria-label={ariaLabel} class="btn lg:btn-lg self-start h-16 text-lg rounded-full"><slot/></a>
+}

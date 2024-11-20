@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body, html {
+    font-size: clamp(16px, 0.95vw, 280px);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .animate-marker {
+    animation: marker 4s ease-out infinite;
+  }
+
+  @keyframes marker {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    35% {
+      transform: translate(-50%, -50%) scale(6);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(6);
+      opacity: 0;
+    }
+  }
+
+  .gradient-background {
+    background: linear-gradient(286deg,rgba(251,247,244,0.75),rgba(17, 181, 253, 0.75),rgba(0, 148, 255, 0.75),rgba(0, 206, 93, 0.75), rgba(0, 206, 93, 0.75));
+    background-size: 300% 300%;
+    animation: gradient-animation 10s ease infinite;
+  }
+
+  .gradient-background-reverse {
+    background: linear-gradient(286deg, rgba(0, 206, 93, 0.75), rgba(0, 206, 93, 0.75), rgba(0, 148, 255, 0.75), rgba(17, 181, 253, 0.75), rgba(251,247,244,0.75));
+    background-size: 300% 300%;
+    animation: gradient-animation 10s ease infinite;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .sidebar-h-screen {
+    height: calc(100vh - 2rem);
+  }
+
+  .in-view {
+    opacity: 1;
+  }
+
+  @keyframes fadeInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOutToTop {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+  
+  .fade-in {
+    animation: fadeInFromTop 0.5s ease-out forwards;
+  }
+  
+  .fade-out {
+    animation: fadeOutToTop 0.5s ease-out forwards;
+  }
+}

@@ -1,0 +1,70 @@
+---
+import type { ExperienceProps } from "../types/experience.props";
+
+interface Props extends ExperienceProps {}
+
+const { dates, title, company, companyUrl, description, technologies, logo, isRemote, linkedinUrl } =
+  Astro.props;
+---
+
+<div class="collapse bg-base-200 transition-[grid-template-rows] duration-[400ms] md:duration-200">
+  <input id={company} data-umami-event={`Show experience in ${company}`} class="peer" type="checkbox" data-mb-collaps="true" value="0" />
+  <label for={company} class="
+    collapse-title text-xl font-medium transition-all duration-300 
+    lg:peer-hover:[&>div>div>div:first-of-type]:-rotate-6 sm:peer-hover:[&>div>div>div:first-of-type]:scale-110
+    peer-checked:[&>div>div>div:first-of-type]:-rotate-6 sm:peer-checked:[&>div>div>div:first-of-type]:scale-110
+    peer-checked:peer-hover:[&>div>div:first-of-type]:scale-100
+    pr-2
+  ">
+    <div class="flex gap-8">
+      <div class="avatar w-[5.5rem] sm:w-24">
+        <div class="w-fit h-fit rounded-xl transform transition-transform duration-[400ms] md:duration-300">
+          <img class="w-full h-full" src={logo} alt={`${company} logo`}>
+        </div>
+      </div>
+      <div>
+        <p class="text-2xl sm:text-3xl lg:text-xl font-bold">{title}</p>
+        <p class="text-lg">{company} {isRemote ? '(Remote)' : ''}</p>
+        <span class="text-base">{dates}</span>
+      </div>
+    </div>
+  </label>
+  <div class="collapse-content">
+    <div class="flex gap-6 flex-col mt-2 sm:mt-0 sm:ml-[8.5rem]">
+      <div>
+        <p class="font-bold text-lg sm:text-xl lg:text-lg">Technologies</p>
+        <ul class="mt-2 flex flex-wrap gap-2 sm:gap-1" aria-label="Technologies used">
+          {technologies.map((technology) => (
+            <li>
+              <div class="flex items-center font-roboto-condensed rounded-full text-blue-600 bg-white sm:border-zinc-700 shadow-sm px-4 py-2 lg:px-3 lg:py-1 text-sm lg:text-xs font-medium leading-5 sm:border sm:border-opacity-50 sm:text-zinc-600 sm:group-hover:border-transparent sm:group-hover:text-blue-600 sm:group-hover:bg-white">
+                {technology}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="font-bold text-lg sm:text-xl lg:text-lg">Work & reponsibilities</p>
+        <p class="text-lg lg:text-base">{description}</p>
+      </div>
+      <div>
+        <p class="font-bold text-lg sm:text-xl lg:text-lg">Company Links</p>
+        <a 
+          target="_blank" 
+          href={companyUrl} 
+          class="link transition-opacity hover:opacity-60"
+          rel="noreferrer"
+          aria-label={`${company} (opens in a new tab)`}
+        >Website</a>
+        <span>|</span>
+        <a
+          target="_blank" 
+          href={linkedinUrl} 
+          class="link transition-opacity hover:opacity-60"
+          rel="noreferrer"
+          aria-label=`LinkedIn ${company} (opens in a new tab)`
+        >LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</div>
