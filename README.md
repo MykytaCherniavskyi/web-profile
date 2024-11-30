@@ -19,7 +19,7 @@ Follow these steps to set up and run the project locally:
 ### Prerequisites
 
 Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (version 16+ recommended)
+- [Node.js](https://nodejs.org/) (Node.js - v18.17.1 or v20.3.0 or higher. ( v19 is not supported.))
 - [npm](https://www.npmjs.com/)
 
 ### Installation
