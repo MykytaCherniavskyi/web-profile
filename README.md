@@ -30,9 +30,7 @@ Ensure you have the following installed:
    cd <project-directory>
    ```
 
-2. ```bash
-    npm install
-  ```
+2. Install dependencies: `npm install`
 
 ### Running the Development Server
 1. Run: `npm run dev`
